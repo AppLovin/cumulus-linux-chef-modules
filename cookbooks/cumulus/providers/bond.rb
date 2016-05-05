@@ -42,6 +42,7 @@ action :create do
   location = new_resource.location
   use_carrier = new_resource.use_carrier
   bridge_access = new_resource.bridge_access
+  stp = new_resource.stp
 
   ipv4 = new_resource.ipv4
   ipv6 = new_resource.ipv6
@@ -71,6 +72,10 @@ action :create do
   config['mstpctl-bpduguard'] = Cumulus::Utils.bool_to_yn(mstpctl_bpduguard) unless mstpctl_bpduguard.nil?
   config['bond-use-carrier'] = use_carrier unless use_carrier.nil? 
   config['bridge-access'] = bridge_access unless bridge_access.nil?
+  
+  unless stp.nil? 
+    config['bridge-stp'] = 'on' if stp
+  end
 
   # Family is always 'inet' if a method is set
   addr_family = addr_method.nil? ? nil : 'inet'
