@@ -230,6 +230,23 @@ module Cumulus
       def bool_to_yn(bool)
         bool ? 'yes' : 'no'
       end
+
+      ##
+      # Convert a boolean value to "on" or "off" (rather than to_s which
+      # converts to "True" and "False"
+      #
+      # = Example
+      #
+      #   bool_to_yn(true)
+      #   => 'on'
+      #
+      # = Parameters::
+      # bool::
+      #   Boolean value to convert from
+      #
+      def bool_to_of(bool)
+        bool ? 'on' : 'off'
+      end
     end
   end
 end
