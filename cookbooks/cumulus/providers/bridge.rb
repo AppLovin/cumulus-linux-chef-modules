@@ -39,7 +39,7 @@ action :create do
   address = ipv4 + ipv6
 
   config = { 'bridge-ports' => ports.join(' '),
-             'bridge-stp' => Cumulus::Utils.bool_to_yn(new_resource.stp) }
+             'bridge-stp' => Cumulus::Utils.bool_to_of(new_resource.stp) }
 
   # Insert optional parameters
   config['address'] = address unless address.nil?
