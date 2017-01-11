@@ -41,6 +41,8 @@ action :create do
   mstpctl_bpduguard = new_resource.mstpctl_bpduguard
   location = new_resource.location
   bridge_access = new_resource.bridge_access
+  vrf_table = new_resource.vrf_table
+  vrf = new_resource.vrf
 
   ipv4 = new_resource.ipv4
   ipv6 = new_resource.ipv6
@@ -64,6 +66,8 @@ action :create do
   config['mstpctl-portnetwork'] = Cumulus::Utils.bool_to_yn(mstpctl_portnetwork) unless mstpctl_portnetwork.nil?
   config['mstpctl-portadminedge'] = Cumulus::Utils.bool_to_yn(mstpctl_portadminedge) unless mstpctl_portadminedge.nil?
   config['mstpctl-bpduguard'] = Cumulus::Utils.bool_to_yn(mstpctl_bpduguard) unless mstpctl_bpduguard.nil?
+  config['vrf-table']= vrf_table unless vrf_table.nil?
+  config['vrf']= vrf unless vrf.nil?
 
   # Insert CLAG parameters if CLAG is enabled
   if clagd_enable

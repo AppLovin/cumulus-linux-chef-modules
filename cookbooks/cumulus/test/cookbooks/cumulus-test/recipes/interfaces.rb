@@ -52,3 +52,13 @@ cumulus_interface 'swp3' do
   pre_down "ip route del 192.168.0.0/16 via 192.168.200.2"
   virtual_ip '11:22:33:44:55:66 192.168.10.1'
 end
+
+#Test if the mgmt vrf is created and applied to eth0
+cumulus_interface 'mgmt' do
+  address '127.0.0.1/8'
+  vrf-table 'auto'
+end
+
+cumulus_interface 'eth0' do
+  vrf 'mgmt'
+end

@@ -17,6 +17,17 @@ end
   end
 end
 
+describe file("mgmt") do
+  its(:content) { should match(/iface mgmt/) }
+  its(:content) { should match(/address 127.0.0.1\/8/) }
+  its(:content) { should match(/vrf-table auto/)}
+end
+
+describe file("#{intf_dir}/eth0") do
+  its(:content) { should match(/iface eth0 inet dhcp/) }
+  its(:content) { should match(/vrf mgmt/) }
+end
+
 (1..10).each do |intn|
   describe file("#{intf_dir}/swp#{intn}") do
     it { should be_file }
