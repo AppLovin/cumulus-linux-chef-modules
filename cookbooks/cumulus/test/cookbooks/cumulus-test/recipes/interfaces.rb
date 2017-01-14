@@ -55,10 +55,11 @@ end
 
 #Test if the mgmt vrf is created and applied to eth0
 cumulus_interface 'mgmt' do
-  address '127.0.0.1/8'
-  vrf-table 'auto'
+  ipv4 ['127.0.0.1/8']
+  vrf_table 'auto'
 end
 
 cumulus_interface 'eth0' do
+  addr_method 'dhcp'
   vrf 'mgmt'
 end

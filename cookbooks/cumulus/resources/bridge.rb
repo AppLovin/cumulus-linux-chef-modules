@@ -20,7 +20,7 @@ attribute :ipv4, kind_of: Array, default: []
 attribute :ipv6, kind_of: Array, default: []
 attribute :addr_method, kind_of: [String, NilClass]
 attribute :ports, kind_of: Array, required: true
-attribute :mtu, kind_of: [Integer, NilClass]
+attribute :mtu, kind_of: [String, NilClass]
 attribute :stp, kind_of: [TrueClass, FalseClass], default: true
 attribute :mstpctl_treeprio, kind_of: [Integer, NilClass]
 attribute :vlan_aware, kind_of: [TrueClass, FalseClass], default: false
@@ -32,3 +32,4 @@ attribute :pvid, kind_of: [Integer, NilClass]
 attribute :location, kind_of: String, default: node['cumulus']['interfaces']['dir']
 attribute :post_up, kind_of: [String, Array, NilClass]
 attribute :pre_down, kind_of: [String, Array, NilClass]
+attribute :mcsnoop, kind_of: [TrueClass, FalseClass], default: false

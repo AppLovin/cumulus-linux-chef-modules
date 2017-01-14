@@ -7,9 +7,9 @@ provisioner:
   require_chef_omnibus: false
 
 platforms:
-  - name: cumulus-vx-2.5.3
+  - name: cumulus-vx-2.5.6
     driver:
-      box: cumulus-vx-2.5.3
+      box: cumulus-vx-2.5.6
       provision: true
       vagrantfiles: ['test/provision-chef.rb']
 
